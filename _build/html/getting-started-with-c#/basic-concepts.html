@@ -1,0 +1,882 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Deep Learning for Molecules &amp; Materials Book" lang="en" name="description" xml:lang="en" />
+<meta content="en_US" property="og:locale" />
+<meta content="summary" name="twitter:card" />
+<meta content="Deep Learning for Molecules &amp; Materials Book" name="twitter:description" />
+<meta content="dmol.pub 📖" name="twitter:title" />
+<meta content="https://dmol.pub/_static/logo.png" name="twitter:image" />
+<meta content="&#64;andrewwhite01" name="twitter:site" />
+
+    <title>Programming Concepts &#8212; Guide to Object Oriented Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/a11y.css?v=ffeaf963" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=cb1cce99" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'getting-started-with-c#/basic-concepts';</script>
+    <script src="../_static/custom.js?v=3f5092eb"></script>
+    <link rel="canonical" href="https://dmol.pub/getting-started-with-c#/basic-concepts.html" />
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Control Flow Statements" href="control-flow-statements.html" />
+    <link rel="prev" title="Visual Studio Code and .NET" href="../setting-up/getting-set-up.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Guide to Object Oriented Programming - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Guide to Object Oriented Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    How to use this Guide
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">A. Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setting-up/getting-set-up.html">Visual Studio Code and .NET</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">B. Fundamentals</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Programming Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="control-flow-statements.html">Control Flow Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="looping-constructs.html">Looping Constructs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error-handling.html">Error Handling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">C. OOP Concepts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../oop-concepts/classes-objects.html">Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop-concepts/encapsulation.html">Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop-concepts/inheritance.html">Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oop-concepts/polymorphism.html">Polymorphism</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/whitead/dmol-book/blob/master/getting-started-with-c#/basic-concepts.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/whitead/dmol-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/whitead/dmol-book/issues/new?title=Issue%20on%20page%20%2Fgetting-started-with-c#/basic-concepts.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/getting-started-with-c#/basic-concepts.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Programming Concepts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-casting">Type Casting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-casting">Implicit Casting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-casting">Explicit Casting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-conversion-methods">Type Conversion Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-inputs">User Inputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-input-and-numbers">User Input and Numbers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-in-c">Operators in C#</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operators">Arithmetic Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-operators">Assignment Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">Comparison Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operators">Logical Operators</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="programming-concepts">
+<h1>Programming Concepts<a class="headerlink" href="#programming-concepts" title="Link to this heading">#</a></h1>
+<p>Here we look into the foundational C# programming concepts, drawing extensively from the resources provided by <a class="reference internal" href="#(https://unitcirclepress.com/)"><span class="xref myst"><em>W3Schools</em></span></a>. Additionally, you’ll find a selection of practical exercises there to reinforce your understanding and application of these concepts.</p>
+<section id="type-casting">
+<h2>Type Casting<a class="headerlink" href="#type-casting" title="Link to this heading">#</a></h2>
+<p>At the beginning of this unit, you’ll encounter the concept of type casting and you’ll more than likely find it’s quite straightforward after.</p>
+<p>In C#, casting are split into two main categories: implicit and explicit casting. Implicit casting is done automatically by the compiler, whereas explicit casting requires manual intervention to specify the type conversion.</p>
+<section id="implicit-casting">
+<h3>Implicit Casting<a class="headerlink" href="#implicit-casting" title="Link to this heading">#</a></h3>
+<p>Implicit casting allows for the automatic conversion of a smaller data type to a larger data type without the risk of data loss. For example, an <code class="docutils literal notranslate"><span class="pre">int</span></code> can be implicitly cast to a long since long can hold all possible values of an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>Below is an example of how we can use implicit casting, in particular we take a small burger (int) and concert it into a large burger (long). If only that was possible in reality..</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="c1">// implicit casting from int to long</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">smallBurger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">;</span>
+<span class="kt">long</span><span class="w"> </span><span class="n">largeBurger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">smallBurger</span><span class="p">;</span><span class="w">  </span>
+</pre></div>
+</div>
+</section>
+<section id="explicit-casting">
+<h3>Explicit Casting<a class="headerlink" href="#explicit-casting" title="Link to this heading">#</a></h3>
+<p>Explicit casting, on the other hand, is necessary when converting from a larger data type to a smaller one, or between incompatible types, where there’s a potential for data loss. This type of casting requires the desired type to be specified using parentheses.</p>
+<p>We can imagine we are trying to fit a large coffee into a smaller cup. You must be careful, or you’ll lose some coffee (data) in the process. This casting requires explicitly specifying the type you’re converting to.</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="c1">// explicit casting from double to int</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">largeCoffee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">9.78</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">smallCoffee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">largeCoffee</span><span class="p">;</span><span class="w">  </span>
+</pre></div>
+</div>
+</section>
+<section id="type-conversion-methods">
+<h3>Type Conversion Methods<a class="headerlink" href="#type-conversion-methods" title="Link to this heading">#</a></h3>
+<p>For cases where casting between incompatible types is not directly supported, or to convert strings to numeric types and vice versa, C# provides built-in methods.</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="c1">// string to an int</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;123&quot;</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Convert</span><span class="p">.</span><span class="n">ToInt32</span><span class="p">(</span><span class="n">str</span><span class="p">);</span><span class="w">  </span>
+
+<span class="c1">// double into a string</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3.14159</span><span class="p">;</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">strPi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pi</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span><span class="w">  </span>
+</pre></div>
+</div>
+<p>Another set of methods for parsing strings into numbers are the <code class="docutils literal notranslate"><span class="pre">Parse</span></code> and <code class="docutils literal notranslate"><span class="pre">TryParse</span></code> methods, which are available for various numeric types:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="c1">// parses string to int</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">numberString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;123&quot;</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">numberString</span><span class="p">);</span><span class="w">  </span>
+
+<span class="c1">// tries to parse string to int and returns false if conversion fails</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">invalidNumberString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;abc&quot;</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">parseResult</span><span class="p">;</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">invalidNumberString</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">parseResult</span><span class="p">);</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="admonition-when-do-we-use-conversion admonition">
+<p class="admonition-title">When do we use conversion?</p>
+<p>Often, you won’t need to convert types. However, scenarios arise—such as when dealing with user inputs—where conversion becomes indispensable. We will take a look at this when we look at <a class="reference internal" href="#user-inputs"><span class="xref myst">User Inputs</span></a>.</p>
+</div>
+</section>
+</section>
+<section id="user-inputs">
+<h2>User Inputs<a class="headerlink" href="#user-inputs" title="Link to this heading">#</a></h2>
+<p>Interacting with users through input is a fundamental aspect of many applications. It involves receiving data from users at runtime, which can increase the interactivity and flexibility of your programs.</p>
+<section id="user-input-and-numbers">
+<h3>User Input and Numbers<a class="headerlink" href="#user-input-and-numbers" title="Link to this heading">#</a></h3>
+<p>One of the challenges you might encounter when dealing with user inputs is when your application expects a numeric value, but user input is inherently treated as a string in C#. This discrepancy often leads to a common type conversion error:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Cannot</span> <span class="n">implicitly</span> <span class="n">convert</span> <span class="nb">type</span> <span class="s1">&#39;string&#39;</span> <span class="n">to</span> <span class="s1">&#39;int&#39;</span>
+</pre></div>
+</div>
+<p>This error occurs because C# is <a href="https://www.techtarget.com/whatis/definition/strongly-typed">strongly typed</a> and does not automatically convert between types without explicit instruction. Here’s how we can handle such scenario:</p>
+<p>When you prompt the user for a number, their input comes in as a string. To use this input as a numeric value in your calculations or logic, you must explicitly convert it from string to the appropriate numeric type (int, double, etc.).</p>
+<p><strong>Handling User Inputs</strong></p>
+<p>Looking at the code below, can you try figure out what the output would be if our <em>possible</em> date wrote <strong>no</strong>?</p>
+<p>Have a think then take a look at the answer below.</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Can I have your number?&quot;</span><span class="p">);</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">possibleDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">dateNumber</span><span class="p">;</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">isSucessful</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">possibleDate</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">dateNumber</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isSucessful</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="k">false</span><span class="p">);</span><span class="w">   </span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>false</p>
+</div>
+</section>
+</section>
+<section id="operators-in-c">
+<h2>Operators in C#<a class="headerlink" href="#operators-in-c" title="Link to this heading">#</a></h2>
+<p>Operators are the foundation of any programming language, allowing you to perform operations on variables and values. In C#, there are several types of operators, including Arithmetic, Assignment, Comparison, and Logical. Let’s delve into each, starting with Arithmetic and Assignment operators.</p>
+<section id="arithmetic-operators">
+<h3>Arithmetic Operators<a class="headerlink" href="#arithmetic-operators" title="Link to this heading">#</a></h3>
+<p>Arithmetic operators are used for basic mathematical operations.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Operator</p></th>
+<th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Description</p></th>
+<th class="head text-left"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>+</p></td>
+<td class="text-left"><p>Addition</p></td>
+<td class="text-left"><p>Adds together two values</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">+</span> <span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>-</p></td>
+<td class="text-left"><p>Subtraction</p></td>
+<td class="text-left"><p>Subtracts one value from another</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">-</span> <span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>*</p></td>
+<td class="text-left"><p>Multiplication</p></td>
+<td class="text-left"><p>Multiplies two values</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>/</p></td>
+<td class="text-left"><p>Division</p></td>
+<td class="text-left"><p>Divides one value by another</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">/</span> <span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>%</p></td>
+<td class="text-left"><p>Modulus</p></td>
+<td class="text-left"><p>Returns the division remainder</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">%</span> <span class="pre">4</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>++</p></td>
+<td class="text-left"><p>Increment</p></td>
+<td class="text-left"><p>Increases the value of a variable by 1</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x++;</span> <span class="pre">//</span> <span class="pre">x</span> <span class="pre">was</span> <span class="pre">5,</span> <span class="pre">now</span> <span class="pre">6</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>–</p></td>
+<td class="text-left"><p>Decrement</p></td>
+<td class="text-left"><p>Decreases the value of a variable by 1</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x--;</span> <span class="pre">//</span> <span class="pre">x</span> <span class="pre">was</span> <span class="pre">5,</span> <span class="pre">now</span> <span class="pre">4</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="assignment-operators">
+<h3>Assignment Operators<a class="headerlink" href="#assignment-operators" title="Link to this heading">#</a></h3>
+<p>Assignment operators are used to assign values to variables with some operations.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Operator</p></th>
+<th class="head text-left"><p>Example</p></th>
+<th class="head text-left"><p>Same As</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>=</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">5</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">5</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>+=</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">3</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>-=</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-=</span> <span class="pre">2</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">-</span> <span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>*=</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*=</span> <span class="pre">3</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>/=</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">/=</span> <span class="pre">2</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">/</span> <span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>%=</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%=</span> <span class="pre">3</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">%</span> <span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>&amp;=</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&amp;=</span> <span class="pre">3</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">&amp;</span> <span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>|=</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">|=</span> <span class="pre">3</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">|</span> <span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>^=</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">^=</span> <span class="pre">3</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">^</span> <span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>&gt;&gt;=</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;&gt;=</span> <span class="pre">2</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">&gt;&gt;</span> <span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>&lt;&lt;=</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;&lt;=</span> <span class="pre">3</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">&lt;&lt;</span> <span class="pre">3</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="comparison-operators">
+<h3>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Link to this heading">#</a></h3>
+<p>Comparison operators are utilised to compare two values, resulting in a Boolean value <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>. These operators are used in decision-making structures within your code.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Operator</p></th>
+<th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Description</p></th>
+<th class="head text-right"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>==</p></td>
+<td class="text-center"><p>Equal to</p></td>
+<td class="text-center"><p>Checks if the values of two operands are equal</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">==</span> <span class="pre">5</span></code> → <code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>!=</p></td>
+<td class="text-center"><p>Not equal</p></td>
+<td class="text-center"><p>Checks if the values of two operands are not equal</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">!=</span> <span class="pre">4</span></code> → <code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>&gt;</p></td>
+<td class="text-center"><p>Greater than</p></td>
+<td class="text-center"><p>Checks if the value of the left operand is greater than the right operand</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">6</span> <span class="pre">&gt;</span> <span class="pre">5</span></code> → <code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>&lt;</p></td>
+<td class="text-center"><p>Less than</p></td>
+<td class="text-center"><p>Checks if the value of the left operand is less than the right operand</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">&lt;</span> <span class="pre">5</span></code> → <code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>&gt;=</p></td>
+<td class="text-center"><p>Greater than or equal to</p></td>
+<td class="text-center"><p>Checks if the left operand is greater than or equal to the right operand</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">&gt;=</span> <span class="pre">5</span></code> → <code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>&lt;=</p></td>
+<td class="text-center"><p>Less than or equal to</p></td>
+<td class="text-center"><p>Checks if the left operand is less than or equal to the right operand</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">&lt;=</span> <span class="pre">5</span></code> → <code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="logical-operators">
+<h3>Logical Operators<a class="headerlink" href="#logical-operators" title="Link to this heading">#</a></h3>
+<p>Logical operators are used to determine the logic between variables or values, primarily within conditional statements, resulting in a Boolean value.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Operator</p></th>
+<th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Description</p></th>
+<th class="head text-right"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>&amp;&amp;</p></td>
+<td class="text-center"><p>Logical AND</p></td>
+<td class="text-center"><p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if both statements are true</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">(5</span> <span class="pre">&gt;</span> <span class="pre">4)</span> <span class="pre">&amp;&amp;</span> <span class="pre">(5</span> <span class="pre">&lt;</span> <span class="pre">6)</span></code> → <code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>||</p></td>
+<td class="text-center"><p>Logical OR</p></td>
+<td class="text-center"><p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if at least one of the statements is true</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">(5</span> <span class="pre">&lt;</span> <span class="pre">4)</span> <span class="pre">||</span> <span class="pre">(5</span> <span class="pre">&lt;</span> <span class="pre">6)</span></code> → <code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>!`</p></td>
+<td class="text-center"><p>Logical NOT</p></td>
+<td class="text-center"><p>Reverses the result, returning <code class="docutils literal notranslate"><span class="pre">false</span></code> if the result is <code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">!(5</span> <span class="pre">==</span> <span class="pre">5)</span></code> → <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./getting-started-with-c#"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../setting-up/getting-set-up.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Visual Studio Code and .NET</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="control-flow-statements.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Control Flow Statements</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-casting">Type Casting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-casting">Implicit Casting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-casting">Explicit Casting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-conversion-methods">Type Conversion Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-inputs">User Inputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-input-and-numbers">User Input and Numbers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-in-c">Operators in C#</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operators">Arithmetic Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-operators">Assignment Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">Comparison Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operators">Logical Operators</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Brandon Smith
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="http://thewhitelab.org">thewhitelab.org</a> <div id="wh-modal"> <button class="wh-venti-button" aria-label="close modal" id="wh-modal-close">✕</button> <img id="wh-modal-img"> </div>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

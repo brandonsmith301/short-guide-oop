@@ -1,0 +1,870 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Deep Learning for Molecules &amp; Materials Book" lang="en" name="description" xml:lang="en" />
+<meta content="en_US" property="og:locale" />
+<meta content="summary" name="twitter:card" />
+<meta content="Deep Learning for Molecules &amp; Materials Book" name="twitter:description" />
+<meta content="dmol.pub 📖" name="twitter:title" />
+<meta content="https://dmol.pub/_static/logo.png" name="twitter:image" />
+<meta content="&#64;andrewwhite01" name="twitter:site" />
+
+    <title>Classes and Objects &#8212; Guide to Object Oriented Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/a11y.css?v=ffeaf963" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=cb1cce99" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'oop-concepts/classes-objects';</script>
+    <script src="../_static/custom.js?v=3f5092eb"></script>
+    <link rel="canonical" href="https://dmol.pub/oop-concepts/classes-objects.html" />
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Encapsulation" href="encapsulation.html" />
+    <link rel="prev" title="Error Handling" href="../getting-started-with-c%23/error-handling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Guide to Object Oriented Programming - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Guide to Object Oriented Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    How to use this Guide
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">A. Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setting-up/getting-set-up.html">Visual Studio Code and .NET</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">B. Fundamentals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started-with-c%23/basic-concepts.html">Programming Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started-with-c%23/control-flow-statements.html">Control Flow Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started-with-c%23/looping-constructs.html">Looping Constructs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started-with-c%23/error-handling.html">Error Handling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">C. OOP Concepts</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encapsulation.html">Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance.html">Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="polymorphism.html">Polymorphism</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/whitead/dmol-book/blob/master/oop-concepts/classes-objects.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/whitead/dmol-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/whitead/dmol-book/issues/new?title=Issue%20on%20page%20%2Foop-concepts/classes-objects.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/oop-concepts/classes-objects.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Classes and Objects</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-classes">Creating Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-objects">Creating Objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-members">Class Members</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructors">Constructors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-this-keyword">Using <code class="docutils literal notranslate"><span class="pre">this</span></code> keyword</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-resources-on-class-and-objects">Further resources on Class and Objects</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="classes-and-objects">
+<h1>Classes and Objects<a class="headerlink" href="#classes-and-objects" title="Link to this heading">#</a></h1>
+<p>Classes in object-oriented programming work as templates for creating objects. They define the attributes and methods that objects of that class will have. Each class provides the design from which individual objects are created, meaning you can use a single class definition to instantiate multiple objects. Each object created from the class is an instance of that class and can have its own unique values for the properties defined by the class.</p>
+<p>For a very quick illustration, we can use the simple idea of minions from Despicable Me.</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Minion</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Minion</span><span class="w"> </span><span class="n">Bob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Minion</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Bob</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Bob&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">Bob</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="n">Minion</span><span class="w"> </span><span class="n">Stuart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Minion</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Stuart</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Stuart&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">Stuart</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example, we have defined a template for a minion using a class. This template can then be used to create unique objects, such as Bob and Stuart, who share the same characteristics as other minions. This is a simple example, but minion designs can get more complex. However, you now understand the concept of a class and an object.</p>
+<section id="creating-classes">
+<h2>Creating Classes<a class="headerlink" href="#creating-classes" title="Link to this heading">#</a></h2>
+<p>A class is a user-defined type that consists of field data, often referred to as member variables, and members that perform operations on this data. These members can include constructors, properties, methods, events, and more. Which we will cover later on.</p>
+<p>Together, the set of field data represents the “state” of a class instance, which is also known as an object. The strength of object-oriented languages like C# lies in their ability to group related data and functionality into a unified class definition.</p>
+<p>For example, we can define a class in C# using the <code class="docutils literal notranslate"><span class="pre">class</span></code> keyword:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Bank</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now that we have defined a class type, we can consider what set of member variables to add to represent its state. For example, we might decide that a <code class="docutils literal notranslate"><span class="pre">Bank</span></code> should have the following:</p>
+<ul class="simple">
+<li><p>A string data type to represent the bank’s name.</p></li>
+<li><p>A string data type to represent the bank’s address.</p></li>
+<li><p>A list of BankAccount objects to represent the accounts managed by the bank.</p></li>
+</ul>
+<p>Based on our initial design considerations, we can update the Bank class definition to include the following member variables:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Bank</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Address</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">BankAccount</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Accounts</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We can see that the member variables in our example are declared using the <em>public</em> <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/access-modifiers">access modifier</a>. This means that once an object (or instance) of this class type is created using the <em>new</em> keyword, these members can be directly accessed and modified. In other words, the object’s state can be easily inspected and changed by other parts of the program.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Data fields of a class should almost never be declared as public. To ensure the security and consistency of your data, it’s a much better design approach to define the data as private (or in some cases, protected) and provide access to it through properties (which we’ll cover later when looking at encapsulation).</p>
+</div>
+<p>The next step is to establish the members that model its behaviour of our Bank class. For this example, the Bank class will define one method named OpenAccount() and another named CloseAccount().</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Bank</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Member variables representing the state of the bank</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Address</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">BankAccount</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Accounts</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Constructor to initialise the bank state</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Bank</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">address</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">address</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">accounts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Account</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Methods modeling the behaviour of the bank</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OpenAccount</span><span class="p">(</span><span class="n">Account</span><span class="w"> </span><span class="n">account</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Perform some validation checks before opening the account</span>
+<span class="w">        </span><span class="c1">// ...</span>
+
+<span class="w">        </span><span class="c1">// Add the account to the bank list of accounts</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">accounts</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">account</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CloseAccount</span><span class="p">(</span><span class="n">Account</span><span class="w"> </span><span class="n">account</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Perform some validation checks before closing the account</span>
+<span class="w">        </span><span class="c1">// ...</span>
+
+<span class="w">        </span><span class="c1">// Remove the account from the bank list of accounts</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">accounts</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">account</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-objects">
+<h2>Creating Objects<a class="headerlink" href="#creating-objects" title="Link to this heading">#</a></h2>
+<p>In the previous examples, we have seen how to define the member variables that represent the state of a class, such as the name and address of a bank. We have also shown how to define methods that model the behaviour of the class, such as the ability to open a new account or close an existing one.</p>
+<p>With a basic, well-defined class that represents the attributes and behaviour of a bank, the next step is to learn how to transform this class into an object.</p>
+<p>To create an instance of a class, also known as an object, we must allocate memory for it using the <em>new</em> keyword. Failing to use the <em>new</em> keyword and attempting to use the class variable in a subsequent code statement will result in a compiler error. For example, the following will not compile:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">Bank</span><span class="w"> </span><span class="n">myBank</span><span class="p">;</span>
+<span class="n">myBank</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;My Bank&quot;</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>Instead, we must use the <em>new</em> keyword to allocate memory for the object and assign it to the class variable:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">Bank</span><span class="w"> </span><span class="n">myBank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bank</span><span class="p">();</span>
+<span class="n">myBank</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;My Bank&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can also reference an object by assigning it an existing object:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">Bank</span><span class="w"> </span><span class="n">myBank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bank</span><span class="p">();</span>
+<span class="n">Bank</span><span class="w"> </span><span class="n">yourBank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myBank</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>We can also make multiple objects of the one class:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">Bank</span><span class="w"> </span><span class="n">myBank1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bank</span><span class="p">();</span>
+<span class="n">Bank</span><span class="w"> </span><span class="n">myBank2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bank</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="class-members">
+<h2>Class Members<a class="headerlink" href="#class-members" title="Link to this heading">#</a></h2>
+<p>Now that we know how to create objects (an instance of the class), we need to know how to set up their fields and properties to ensure that the object behaves as intended.</p>
+<p>By default numeric fields are set to zero and reference types are set to null. This type of initialisation may be fine if these default values align with the requirements of our application. However, if we want to be more specific we can explicitly set a default value for a field within our class.</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Bank</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">balance1</span><span class="p">;</span><span class="w">        </span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">balance2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span><span class="p">;</span><span class="w"> </span>
+<span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Bank</span><span class="w"> </span><span class="n">myBank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bank</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">myBank</span><span class="p">.</span><span class="n">balance1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">myBank</span><span class="p">.</span><span class="n">balance2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>What will the above example output?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>0</p>
+<p>1000</p>
+</div>
+<p>To provide flexibility, constructors can be designed to accept parameters, enabling the initialisation of an object with specific values upon creation. We will look into this further in the next section.</p>
+</section>
+<section id="constructors">
+<h2>Constructors<a class="headerlink" href="#constructors" title="Link to this heading">#</a></h2>
+<p>Every C# class comes with a default <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/constructors">constructor</a> that is automatically called when an object is created. This default constructor initialises all the member variables of the class to their default values. However, if we want to set the member variables to specific values when an object is created, we can define a custom default constructor.</p>
+<p>For example, let’s say we now have a BankAccount class with member variables accountNumber, balance, and customerName. We can define a custom default constructor for this class as follows:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">BankAccount</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="c1">// The &#39;state&#39; of the BankAccount.</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">;</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">customerName</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// A custom default constructor.</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nf">BankAccount</span><span class="p">()</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">accountNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11111</span><span class="p">;</span>
+<span class="w">    </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span><span class="p">;</span>
+<span class="w">    </span><span class="n">customerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;John Wick&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Constructor overloading</strong></p>
+<p>We can actually have more than just one constructor, for example our BankAccount class could have a default constructor, a constructor that takes a customer name and a constructor that takes a customer name and initial balance. This means we can allow the object user to initialise the state of a BankAccount object in a simple way directly at the time of creation.</p>
+<p>The number and/or type of constructor arguments is what differentiates one constructor from another in the eyes of the C# compiler. This is known as constructor overloading, which is similar to method overloading.</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">BankAccount</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="c1">// The &#39;state&#39; of the BankAccount.</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">;</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">customerName</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// A custom default constructor.</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nf">BankAccount</span><span class="p">()</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">accountNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11111</span><span class="p">;</span>
+<span class="w">    </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span><span class="p">;</span>
+<span class="w">    </span><span class="n">customerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;John Wick&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// A constructor that takes a customer name.</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nf">BankAccount</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">accountNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerateAccountNumber</span><span class="p">();</span>
+<span class="w">    </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">customerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// A constructor that takes a customer name and initial balance.</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nf">BankAccount</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">initialBalance</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">accountNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerateAccountNumber</span><span class="p">();</span>
+<span class="w">    </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">initialBalance</span><span class="p">;</span>
+<span class="w">    </span><span class="n">customerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// A method to print the state of the BankAccount.</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PrintState</span><span class="p">()</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Account Number: {accountNumber}&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Balance: {balance:C}&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Customer Name: {customerName}&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// A private method to generate a random account number.</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GenerateAccountNumber</span><span class="p">()</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Random</span><span class="w"> </span><span class="n">rand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">rand</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="m">99999</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="c1">// Invoking the default constructor.</span>
+<span class="n">BankAccount</span><span class="w"> </span><span class="n">johnsAccount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BankAccount</span><span class="p">();</span>
+<span class="c1">// Prints &quot;Account Number: 11111&quot;, &quot;Balance: $1,000.00&quot;, and &quot;Customer Name: John Wick&quot;.</span>
+<span class="n">johnsAccount</span><span class="p">.</span><span class="n">PrintState</span><span class="p">();</span>
+
+<span class="c1">// Invoking the constructor that takes a customer name.</span>
+<span class="n">BankAccount</span><span class="w"> </span><span class="n">shreksAccount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BankAccount</span><span class="p">(</span><span class="s">&quot;Shrek&quot;</span><span class="p">);</span>
+<span class="n">shreksAccount</span><span class="p">.</span><span class="n">PrintState</span><span class="p">();</span>
+
+<span class="c1">// Invoking the constructor that takes a customer name and initial balance.</span>
+<span class="n">BankAccount</span><span class="w"> </span><span class="n">donkeysAccount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BankAccount</span><span class="p">(</span><span class="s">&quot;Donkey&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">500</span><span class="p">);</span>
+<span class="n">donkeysAccount</span><span class="p">.</span><span class="n">PrintState</span><span class="p">();</span>
+
+<span class="c1">// Which should output the following (the account numbers will differ)</span>
+
+<span class="cm">/*</span>
+<span class="cm">Account Number: 11111</span>
+<span class="cm">Balance: 1,000.00</span>
+<span class="cm">Customer Name: John Wick</span>
+
+<span class="cm">Account Number: 89730</span>
+<span class="cm">Balance: 0.00</span>
+<span class="cm">Customer Name: Shrek</span>
+
+<span class="cm">Account Number: 79595</span>
+<span class="cm">Balance: 500.00</span>
+<span class="cm">Customer Name: Donkey</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both Visual Studio and Visual Studio Code have a feature called the “ctor” code snippet. By typing “ctor” and then pressing the Tab key, the IDE will automatically generate a custom default constructor for you. You can then modify it by adding any necessary parameters and implementation logic. It’s a quick and convenient way to create constructors, so be sure to give it a try.</p>
+</div>
+</section>
+<section id="using-this-keyword">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">this</span></code> keyword<a class="headerlink" href="#using-this-keyword" title="Link to this heading">#</a></h2>
+<p>In C# we can use <em>this</em> keyword to refer to the current instance of a class (object). It is particularly useful for distinguishing between class fields and method parameters that share the same name.</p>
+<p>For example, let us look at a simplified version of the BankAccount class:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">BankAccount</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">customerName</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetName</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">customerName</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Without THIS, the local parameter shadows the class field</span>
+<span class="w">        </span><span class="c1">// THIS clarifies that we mean the class field</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">customerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customerName</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the example, without using <em>this</em> the customerName parameter would be simply assigning the value to itself, effectively doing nothing. By using the keyword <em>this</em> we are specifying that the assignment should be made to the class field customerName.</p>
+</section>
+<section id="further-resources-on-class-and-objects">
+<h2>Further resources on Class and Objects<a class="headerlink" href="#further-resources-on-class-and-objects" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/classes">Classes and Structs</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/object-oriented-programming">Object-Oriented Programming Concepts</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/members">Members in C#</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/methods">Methods in C#</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/constructors">Constructors in C#</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/objects">Objects in C#</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./oop-concepts"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../getting-started-with-c%23/error-handling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Error Handling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="encapsulation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Encapsulation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-classes">Creating Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-objects">Creating Objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-members">Class Members</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructors">Constructors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-this-keyword">Using <code class="docutils literal notranslate"><span class="pre">this</span></code> keyword</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-resources-on-class-and-objects">Further resources on Class and Objects</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Brandon Smith
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="http://thewhitelab.org">thewhitelab.org</a> <div id="wh-modal"> <button class="wh-venti-button" aria-label="close modal" id="wh-modal-close">✕</button> <img id="wh-modal-img"> </div>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

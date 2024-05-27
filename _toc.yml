@@ -1,0 +1,21 @@
+format: jb-book
+root: index
+parts:
+- caption: A. Getting Started
+  numbered: false
+  chapters:
+  - file: setting-up/getting-set-up
+- caption: B. Fundamentals
+  numbered: false
+  chapters:
+  - file: getting-started-with-c#/basic-concepts
+  - file: getting-started-with-c#/control-flow-statements
+  - file: getting-started-with-c#/looping-constructs
+  - file: getting-started-with-c#/error-handling
+- caption: C. OOP Concepts
+  numbered: false
+  chapters:
+  - file: oop-concepts/classes-objects
+  - file: oop-concepts/encapsulation
+  - file: oop-concepts/inheritance
+  - file: oop-concepts/polymorphism
