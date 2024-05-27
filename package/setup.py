@@ -13,6 +13,7 @@ setup(
     packages=["dmol"],
     install_requires=[
         "jupyter-book==0.13.1",
+        "lxml_html_clean"
     ],
     test_suite="tests",
     long_description="""
