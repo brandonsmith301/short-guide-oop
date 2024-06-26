@@ -1,0 +1,955 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Polymorphism &#8212; Guide to Object Oriented Programming</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/a11y.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://dmol.pub/oop-concepts/polymorphism.html" />
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Inheritance" href="inheritance.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Guide to Object Oriented Programming</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    How to use this Guide
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  A. Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setting-up/getting-set-up.html">
+   Visual Studio Code and .NET
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  B. Fundamentals
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../getting-started-with-c%23/basic-concepts.html">
+   Programming Concepts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../getting-started-with-c%23/control-flow-statements.html">
+   Control Flow Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../getting-started-with-c%23/looping-constructs.html">
+   Looping Constructs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../getting-started-with-c%23/error-handling.html">
+   Error Handling
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  C. OOP Concepts
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes-objects.html">
+   Classes and Objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="encapsulation.html">
+   Encapsulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inheritance.html">
+   Inheritance
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Polymorphism
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://brandonsmith301.github.io/short-guide-oop/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brandonsmith301.github.io/short-guide-oop//issues/new?title=Issue%20on%20page%20%2Foop-concepts/polymorphism.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/oop-concepts/polymorphism.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Polymorphism
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#virtual-and-abstract-members">
+     Virtual and Abstract Members
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-virtual-and-override-keywords">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       virtual
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       override
+      </span>
+     </code>
+     keywords
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#base-class-with-virtual-methods">
+       Base Class with Virtual Methods
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#derived-classes-overriding-behaviour">
+       Derived Classes Overriding Behaviour
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstraction">
+   Abstraction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#encapsulation-vs-abstraction">
+     Encapsulation vs. Abstraction
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abstract-classes">
+     Abstract Classes
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#abstract-classes-vs-inheritance-what-s-the-difference">
+       Abstract Classes vs. Inheritance: What’s the Difference?
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#refactoring-to-use-abstract-class-and-methods">
+       Refactoring to Use Abstract Class and Methods
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-interfaces">
+     Using Interfaces
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abstract-classes-vs-interfaces">
+     Abstract classes vs. Interfaces
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Polymorphism</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Polymorphism
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#virtual-and-abstract-members">
+     Virtual and Abstract Members
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-virtual-and-override-keywords">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       virtual
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       override
+      </span>
+     </code>
+     keywords
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#base-class-with-virtual-methods">
+       Base Class with Virtual Methods
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#derived-classes-overriding-behaviour">
+       Derived Classes Overriding Behaviour
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstraction">
+   Abstraction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#encapsulation-vs-abstraction">
+     Encapsulation vs. Abstraction
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abstract-classes">
+     Abstract Classes
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#abstract-classes-vs-inheritance-what-s-the-difference">
+       Abstract Classes vs. Inheritance: What’s the Difference?
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#refactoring-to-use-abstract-class-and-methods">
+       Refactoring to Use Abstract Class and Methods
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-interfaces">
+     Using Interfaces
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abstract-classes-vs-interfaces">
+     Abstract classes vs. Interfaces
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="polymorphism">
+<h1>Polymorphism<a class="headerlink" href="#polymorphism" title="Permalink to this headline">#</a></h1>
+<p>Polymorphism allows related objects to be treated in a similar way, and allows derived classes to redefine how they respond to the same request by overriding the members defined by the base class.</p>
+<p>For example, it allows a base class to define a set of members, known as the polymorphic interface, that are available to all of its derived classes. The polymorphic interface can be constructed using any number of <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/virtual">virtual</a> or <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/abstract">abstract</a> members.</p>
+<p>Looking back at our bank system where we had various types of accounts such as CheckingAccount and SavingsAccount which all derive from a single base class Account. Each account type can have its own unique behaviours while also adhering to a general contract defined by the Account base class.</p>
+<section id="virtual-and-abstract-members">
+<h2>Virtual and Abstract Members<a class="headerlink" href="#virtual-and-abstract-members" title="Permalink to this headline">#</a></h2>
+<p>In C#, Polymorphism is implemented using virtual and abstract members within classes.</p>
+<p><strong>Virtual Members</strong></p>
+<p>These are methods in a base class that have a default implementation but can be overridden by derived classes. For instance, a virtual CalculateInterest method in an Account class might have a basic implementation, but a SavingsAccount might override it to implement interest calculations specific to savings accounts.</p>
+<p><strong>Abstract Members</strong></p>
+<p>Unlike virtual members, abstract members do not provide an implementation. They merely define a method’s signature, and it’s mandatory for derived classes to provide their own implementations. If the Account class had an abstract GenerateStatement method, each subclass (CheckingAccount, SavingsAccount) would need to implement its own version of how statements are generated and formatted.</p>
+</section>
+<section id="using-virtual-and-override-keywords">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">virtual</span></code> and <code class="docutils literal notranslate"><span class="pre">override</span></code> keywords<a class="headerlink" href="#using-virtual-and-override-keywords" title="Permalink to this headline">#</a></h2>
+<section id="base-class-with-virtual-methods">
+<h3>Base Class with Virtual Methods<a class="headerlink" href="#base-class-with-virtual-methods" title="Permalink to this headline">#</a></h3>
+<p>In our bank system, we want to include a method ApplyMonthlyFee to our Account base class which can be modified by different types of accounts. We will define this as a virtual method, allowing derived classes to provide their own implementations.</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Account</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">_balance</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Account</span><span class="p">(</span><span class="kt">decimal</span><span class="w"> </span><span class="n">initialBalance</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">initialBalance</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyMonthlyFee</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Default behaviour: a basic account might have a fixed monthly fee</span>
+<span class="w">        </span><span class="n">_balance</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="m">10.00</span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="c1">// Deduct a $10 monthly fee</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Deposit</span><span class="p">(</span><span class="kt">decimal</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_balance</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="derived-classes-overriding-behaviour">
+<h3>Derived Classes Overriding Behaviour<a class="headerlink" href="#derived-classes-overriding-behaviour" title="Permalink to this headline">#</a></h3>
+<p>Different types of accounts might have different fee structures. For example, CheckingAccount might have a higher fee, while SavingsAccount might have benefits that waive the fee under certain conditions.</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CheckingAccount</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Account</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">CheckingAccount</span><span class="p">(</span><span class="kt">decimal</span><span class="w"> </span><span class="n">initialBalance</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">initialBalance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyMonthlyFee</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Higher fee for checking accounts</span>
+<span class="w">        </span><span class="n">_balance</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="m">20.00</span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="c1">// Deduct a $20 monthly fee</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SavingsAccount</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Account</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">SavingsAccount</span><span class="p">(</span><span class="kt">decimal</span><span class="w"> </span><span class="n">initialBalance</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">initialBalance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyMonthlyFee</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// No fee if the balance is above a certain threshold</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_balance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">5000.00</span><span class="n">m</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_balance</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="m">5.00</span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="c1">// Deduct a $5 monthly fee</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p style="text-align:center">
+  <img src="../_static/images/inheritance_exampleUML5.png" width="600" height="285">
+  <br>
+  <em>UML Diagram: Using Polymorphism</em>
+</p><p>With polymorphism, you can manipulate instances of these accounts through references to the base class Account, but each will behave according to their overridden implementations of ApplyMonthlyFee. This allows you to write generic code that handles different account types transparently:</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Account</span><span class="o">&gt;</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Account</span><span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">CheckingAccount</span><span class="p">(</span><span class="m">1000</span><span class="n">m</span><span class="p">),</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">SavingsAccount</span><span class="p">(</span><span class="m">6000</span><span class="n">m</span><span class="p">)</span>
+<span class="p">};</span>
+
+<span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">accounts</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">account</span><span class="p">.</span><span class="n">ApplyMonthlyFee</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;New Balance: {account._balance}&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="abstraction">
+<h1>Abstraction<a class="headerlink" href="#abstraction" title="Permalink to this headline">#</a></h1>
+<p>Abstraction is a fundamental concept in object-oriented programming that aims to simplify complex realities. For instance, consider a person as an object. In the context of a software project, it’s not necessary to know every single detail about that person. Instead, you would focus only on the data and tasks that are relevant to your application and the operations you want to perform with that data. This way, abstraction helps to create more manageable and efficient systems by concentrating on essential aspects and ignoring the unnecessary ones.</p>
+<p>While there are strong similarities between Abstraction and Encapsulation, they really serve different purposes although still complementing each other. Abstraction is about hiding the complexity of the system by exposing just the necessary components, whereas encapsulation is about hiding the internal states and behaviours to protect the integrity of the data.</p>
+<section id="encapsulation-vs-abstraction">
+<h2>Encapsulation vs. Abstraction<a class="headerlink" href="#encapsulation-vs-abstraction" title="Permalink to this headline">#</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Abstraction</p></th>
+<th class="head"><p>Encapsulation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Definition</strong></p></td>
+<td><p>Reduces complexity by hiding non-essential details.</p></td>
+<td><p>Bundles data and methods, limiting access to internals.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Focus</strong></p></td>
+<td><p>Design-level concept that simplifies system interactions.</p></td>
+<td><p>Implementation-level concept emphasizing data security.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Purpose</strong></p></td>
+<td><p>Focuses on essential functionalities of an object.</p></td>
+<td><p>Secures data integrity and controls interaction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>What it hides</strong></p></td>
+<td><p>Implementation details unnecessary for users.</p></td>
+<td><p>Internal state and implementation specifics.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Level of Detail</strong></p></td>
+<td><p>Shows only necessary features and functions.</p></td>
+<td><p>Encloses data and methods, obscuring how features work.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use Case</strong></p></td>
+<td><p>Allows handling various Minions without knowing specifics.</p></td>
+<td><p>Controls how Minion properties are altered to prevent misuse.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Implementation</strong></p></td>
+<td><p>Utilizes interfaces or abstract classes for uniform actions.</p></td>
+<td><p>Uses access modifiers to manage data and method visibility.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dependency</strong></p></td>
+<td><p>Often paired with encapsulation for better interface management.</p></td>
+<td><p>Typically complements abstraction for enhanced modularity.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="abstract-classes">
+<h2>Abstract Classes<a class="headerlink" href="#abstract-classes" title="Permalink to this headline">#</a></h2>
+<p>Abstract classes allow us to establish a blueprint for a group of related classes without necessarily implementing the full functionality within the abstract class itself.</p>
+<p>In our banking system, each type of account share a common feature such as the balance, depositing funds and withdrawing funds. However, the specific behaviours and rules for each account type could differentiate significantly.</p>
+<section id="abstract-classes-vs-inheritance-what-s-the-difference">
+<h3>Abstract Classes vs. Inheritance: What’s the Difference?<a class="headerlink" href="#abstract-classes-vs-inheritance-what-s-the-difference" title="Permalink to this headline">#</a></h3>
+<p>Inheritance is a way to create a new class that derives from an existing class, inheriting its features and potentially extending or modifying them. An abstract class is often used as a base class in inheritance hierarchies, but its primary purpose is to outline a template and enforce certain architectural patterns. It dictates not only the structure but also the behaviour of its subclasses.</p>
+<p>Normal base classes can usually be instantiated on their own, unless they are specifically made abstract. On the otherhand abstract classes cannot be instantiated directly and are designed to only be subclassed.</p>
+<p>In a regular base class, methods do not need to be overridden by the subclass. However, in an abstract class, any abstract method must be implemented by the subclass, providing a strict contract that the subclass must adhere to.</p>
+<p>While all abstract classes can be part of an inheritance hierarchy, not all base classes are abstract. Abstract classes define templates for other classes and prevent direct instantiation, promoting a design that encapsulates a concept without implementing all of its details. Inheritance, more generally, is about extending existing classes and reusing code across a class hierarchy.</p>
+</section>
+<section id="refactoring-to-use-abstract-class-and-methods">
+<h3>Refactoring to Use Abstract Class and Methods<a class="headerlink" href="#refactoring-to-use-abstract-class-and-methods" title="Permalink to this headline">#</a></h3>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Account</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">_balance</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Account</span><span class="p">(</span><span class="kt">decimal</span><span class="w"> </span><span class="n">initialBalance</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">initialBalance</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Abstract method to apply monthly fees, requiring implementation in derived classes</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyMonthlyFee</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Deposit</span><span class="p">(</span><span class="kt">decimal</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_balance</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CheckingAccount</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Account</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">CheckingAccount</span><span class="p">(</span><span class="kt">decimal</span><span class="w"> </span><span class="n">initialBalance</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">initialBalance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyMonthlyFee</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Specific implementation for checking accounts</span>
+<span class="w">        </span><span class="n">_balance</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="m">20.00</span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="c1">// Deduct a $20 monthly fee</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SavingsAccount</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Account</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">SavingsAccount</span><span class="p">(</span><span class="kt">decimal</span><span class="w"> </span><span class="n">initialBalance</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">initialBalance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyMonthlyFee</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Conditional fee application based on the balance</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_balance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">5000.00</span><span class="n">m</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_balance</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="m">5.00</span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="c1">// Deduct a $5 monthly fee</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Abstract methods are special types of methods that do not have an implementation and are designed to be overridden by a subclass. They can only be defined in abstract classes. If you try to define an abstract method in a regular class, you will get a compiler error.</p>
+</div>
+<p><strong>Another Example of Using Abstract Classes and Methods</strong></p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">BankSystem</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Account</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">protected</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">_name</span><span class="p">;</span>
+<span class="w">        </span><span class="k">protected</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">_balance</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="nf">Account</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">balance</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">            </span><span class="n">_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DisplayBalance</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">BankAccount</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Account</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="nf">BankAccount</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">balance</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">balance</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DisplayBalance</span><span class="p">()</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Balance: {0:C}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_balance</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Account name: {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_name</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">BankAccount</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BankAccount</span><span class="p">(</span><span class="s">&quot;John Wick&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">);</span>
+<span class="w">            </span><span class="n">account</span><span class="p">.</span><span class="n">DisplayBalance</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In our new example, we’ve created an abstract class Account with protected fields _name and _balance. The Account class also contains an abstract method called DisplayBalance().</p>
+<p>The BankAccount class is now derived from the Account class and implements the DisplayBalance() method. This type of design follows very closely to how we might use inheritance.</p>
+</section>
+</section>
+<section id="using-interfaces">
+<h2>Using Interfaces<a class="headerlink" href="#using-interfaces" title="Permalink to this headline">#</a></h2>
+<p>When you define a class as an abstract base class using the abstract keyword, you’re setting up a framework that other classes can build upon. This type of class often includes abstract members, which are methods or properties that don’t have their own implementation in the abstract class itself. Instead, any class that inherits from this abstract base class is required to provide its own implementation of these abstract members.</p>
+<p>Now, an interface in object-oriented programming can be thought of as a contract or a purely abstract class that dictates a structure but not the specifics of the implementation. Unlike abstract classes, interfaces can only contain method and property declarations with no implementation details whatsoever — they are, in essence, completely abstract.</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">BankSystem</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Define an interface with the required methods</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IAccount</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">void</span><span class="w"> </span><span class="nf">DisplayBalance</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Implement the interface in the BankAccount class</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">BankAccount</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IAccount</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">_name</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">_balance</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="nf">BankAccount</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">balance</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">            </span><span class="n">_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DisplayBalance</span><span class="p">()</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Balance: {0:C}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_balance</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Account name: {0}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_name</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">IAccount</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BankAccount</span><span class="p">(</span><span class="s">&quot;John Wick&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">);</span>
+<span class="w">            </span><span class="n">account</span><span class="p">.</span><span class="n">DisplayBalance</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We can notice that both abstract classes and interfaces look quite similar. However, we would use abstract classes when we might need to share code among closely related classes and define common behaviour. They allow for fields, constructors and implemented methods.</p>
+<p>Interfaces should be used when you need to define a contract for what methods a class should implement, without dictating how they should do so. They offer more flexibility through multiple inheritance and decoupling.</p>
+</section>
+<section id="abstract-classes-vs-interfaces">
+<h2>Abstract classes vs. Interfaces<a class="headerlink" href="#abstract-classes-vs-interfaces" title="Permalink to this headline">#</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Abstract Classes</p></th>
+<th class="head"><p>Interfaces</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Definition</strong></p></td>
+<td><p>A class that cannot be instantiated and can include both abstract and concrete methods.</p></td>
+<td><p>A completely abstract type that defines a set of methods and properties without implementation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Purpose</strong></p></td>
+<td><p>Used to provide a common base class with shared code and state, as well as to define a contract.</p></td>
+<td><p>Used to define a contract that multiple classes can implement, ensuring they all provide certain methods.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Implementation</strong></p></td>
+<td><p>Can include fields, constructors, and methods with implementation.</p></td>
+<td><p>Can only include method and property declarations (no fields or implementation).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Multiple Inheritance</strong></p></td>
+<td><p>A class can inherit from only one abstract class (single inheritance).</p></td>
+<td><p>A class can implement multiple interfaces, allowing for more flexible designs.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Flexibility</strong></p></td>
+<td><p>Less flexible due to single inheritance; used when classes share a common base or functionality.</p></td>
+<td><p>More flexible due to multiple inheritance; ideal for defining common functionality across unrelated classes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use Case</strong></p></td>
+<td><p>Use when you need to share code among closely related classes and define common behaviour.</p></td>
+<td><p>Use when you need to define capabilities that can be shared across different classes without forcing a class hierarchy.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Fields and Constructors</strong></p></td>
+<td><p>Can have fields, constructors, and access modifiers on methods.</p></td>
+<td><p>Cannot have fields or constructors; all methods are implicitly public and abstract.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Default Implementation</strong></p></td>
+<td><p>Can provide default behaviour for some methods, allowing subclasses to override only what’s necessary.</p></td>
+<td><p>Cannot provide any implementation; all methods must be implemented by the class that implements the interface.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>To clearly distinguish interfaces from classes, it’s a common convention to prefix interface names with the letter “I”. This naming convention helps both you and other developers quickly identify the type as an interface.</p>
+<p>By design, all members of an interface are implicitly abstract and public, meaning they must be implemented by any class that implements the interface.</p>
+<p><strong>Interfaces can declare properties and methods, but they cannot include fields.</strong></p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./oop-concepts"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="inheritance.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Inheritance</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Brandon Smith<br/>
+  
+      &copy; Copyright 2024.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
